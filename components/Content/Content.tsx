@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable @next/next/no-img-element */
+import React, { useState, useEffect, SetStateAction, Dispatch } from "react";
 import styles from "./Content.module.css";
 import axios from "axios";
 interface MessageType {
@@ -8,33 +9,48 @@ interface MessageType {
   image: string;
 }
 type MessagesType = {
-  setMessages: React.FC<React.SetStateAction<MessageType[] | null>>;
+  setMessages: Dispatch<SetStateAction<any[] | null>>;
   messages: MessageType[] | null;
+  isDesktopMenu: any;
 };
 
-const Content: React.FC<MessagesType> = ({ messages, setMessages }) => {
+const Content: React.FC<MessagesType> = ({
+  messages,
+  setMessages,
+  isDesktopMenu,
+}) => {
   const [inputText, setInputText] = useState("");
   const addPost = async () => {
     try {
-      const newPost = {
-        createdAt: "",
-        message: inputText,
-        image: "",
+      const checkValidation = () => {
+        if (!inputText) {
+          return false;
+        } else {
+          return true;
+        }
       };
-      const response = await axios.post(
-        "https://656599ffeb8bb4b70ef1ebb4.mockapi.io/chat",
-        { ...newPost }
-      );
+      const isValid = checkValidation();
+      if (isValid) {
+        const newPost = {
+          createdAt: "",
+          message: inputText,
+          image: "",
+        };
+        const response = await axios.post(
+          "https://656599ffeb8bb4b70ef1ebb4.mockapi.io/chat",
+          { ...newPost }
+        );
 
-      if (response.status === 201) {
-        setMessages((prevState: MessageType[] | null) => [
-          ...(prevState || []),
-          response.data,
-        ]);
-        setInputText("");
-        console.log(response);
-      } else {
-        console.error("Unexpected response status:", response.status);
+        if (response.status === 201) {
+          setMessages((prevState: MessageType[] | null) => [
+            ...(prevState || []),
+            response.data,
+          ]);
+          setInputText("");
+          console.log(response);
+        } else {
+          console.error("Unexpected response status:", response.status);
+        }
       }
     } catch (error) {
       console.error("Error while adding post:", error);
@@ -43,24 +59,25 @@ const Content: React.FC<MessagesType> = ({ messages, setMessages }) => {
 
   return (
     <>
-      <div className="flex w-5/6">
-        <div className="bg-gray-100 flex flex-col rounded-xl">
+      <div
+        className={`flex ${isDesktopMenu ? "lg:w-full" : "lg:w-5/6"} h-full`}
+      >
+        <div className="bg-white h-full  max-h-full flex flex-col rounded-customMg h-full ">
           <div
             id="messages"
-            className="flex w-full flex-col space-y-4 px-6 py-3 justify-between position-relative overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 "
+            className="lg:flex w-full  flex-col space-y-4 px-6 py-3 justify-between   overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 "
           >
             <div>
-              <div className={`w-4/5  max-h-300 ${styles.margin_auto}`}>
+              <div className={`w-4/5  z-0 ${styles.margin_auto}`}>
                 {messages &&
                   messages.map((message) => (
                     <div className="chat-message" key={message.id}>
                       <div className="flex justify-center items-center text-gray-600">
-                        <div className="flex flex-col space-y-2 w-full order-2 ">
-                          <span className="px-4 py-7 rounded-lg inline-block  w-full text-gray-600">
+                        <div className="lg:flex flex-col space-y-2 w-full order-2 ">
+                          <span className="px-4 py-5 rounded-lg inline-block  w-full text-gray-600">
                             {message.message}
                           </span>
                         </div>
-
                         <img
                           src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
                           alt="My profile"
@@ -75,13 +92,11 @@ const Content: React.FC<MessagesType> = ({ messages, setMessages }) => {
               </div>
             </div>
           </div>
-          <div
-            className={`sm:mb-0 w-4/5 ${styles.inputbox} ${styles.margin_auto}`}
-          >
-            <div className="relative flex justify-center items-center">
+          <div className={`sm:mb-0 w-4/5 pt-3 border-t ${styles.margin_auto}`}>
+            <div className="relative flex justify-center items-center mx-5">
               <button
                 type="button"
-                className="items-center justify-center rounded-lg px-3  transition duration-500 ease-in-out text-dark  hover:bg-gray-400 focus:outline-none"
+                className="items-center justify-center  px-3 rounded-custom transition duration-500 ease-in-out text-dark  hover:bg-gray-200 focus:outline-none"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +119,7 @@ const Content: React.FC<MessagesType> = ({ messages, setMessages }) => {
                   onChange={(e) => setInputText(e.target.value)}
                   id="hs-trailing-icon"
                   name="hs-trailing-icon"
-                  className="p-5 pe-11 block w-full border-gray-950 border-3 rounded-xl text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-white-900  dark:text-gray-400 dark:focus:ring-gray-600"
+                  className="p-5 pe-11 block w-full border-gray-400 border border-gray-400 border-1 rounded-custom text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
                   placeholder="Iveskite užklausa čia"
                 ></input>
                 <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4">
@@ -122,20 +137,29 @@ const Content: React.FC<MessagesType> = ({ messages, setMessages }) => {
                   </svg>
                 </div>
               </div>
-
               <button
                 type="button"
                 onClick={() => addPost()}
-                className="items-center justify-center rounded-lg px-3 transition duration-500 ease-in-out text-dark  hover:bg-gray-400 focus:outline-none"
+                className={`items-center justify-center rounded-lg px-3 transition duration-500 ease-in-out text-dark   focus:outline-none ${
+                  inputText ? "" : "opacity-40 cursor-default"
+                }`}
+                disabled={!inputText}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
-                  className="h-10 w-5  transform rotate-90"
+                  className="h-10 w-5 transform rotate-90"
                 >
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                 </svg>
               </button>
+            </div>
+            <div className="p-2 text-center">
+              <p className="text-xs">
+                „Bard“ gali pateikti netikslios informacijos, įskaitant
+                informaciją apie žmones, todėl dar kartą patikrinkite atsakymus.
+                Jūsų privatumas ir „Bard“
+              </p>
             </div>
           </div>
         </div>
