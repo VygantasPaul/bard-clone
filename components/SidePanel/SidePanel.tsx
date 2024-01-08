@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./SidePanel.module.css";
+import { Inter } from "next/font/google";
+const interBold = Inter({ subsets: ["latin"], weight: "600" });
 type ToogleDesktopType = {
   isDesktopMenu: any;
   isMobileMenu: any;
@@ -12,7 +14,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
   return (
     <>
       <div
-        className={`fixed bg-white flex flex-col justify-between z-[100] px-6 pt-4  w-full md:w-1/2 ${
+        className={`fixed bg-white flex flex-col justify-between z-[100] px-6 pt-4  w-[90%] md:w-1/2 ${
           isMobileMenu ? "block  " : "hidden lg:hidden "
         } h-full `}
       >
@@ -69,11 +71,16 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
         </div>
         <div>
           <div className="pb-20">
-            <p className="cursor-pointer text-xs text-grey-400">
+            <p
+              className={` text-xs font-semiBold text-grey-400 ${interBold.className}`}
+            >
               Klaipėda, Klaipėdos m. sav., Lietuva
             </p>
-            <p className="text-xs  text-blue-400">
-              Pagal jūsų vietas (namai) • Atnaujinti vietovę
+            <p className={`text-xs  text-blue-400 ${interBold.className}`}>
+              Pagal jūsų vietas (namai) •
+              <a href="" className="cursor-pointer">
+                Atnaujinti vietovę
+              </a>
             </p>
           </div>
         </div>
@@ -129,16 +136,21 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
               </button>
             </div>
           </div>
-          <div className="flex flex-col justify-between items-center h-full pb-6   px-3  w-full  ">
+          <div className="flex flex-col justify-between items-center h-full    px-3  w-full  ">
             <div></div>
             <div className="flex justify-between items-center w-full">
               <div className="flex justify-center items-center  space-x-2">
                 <div className="flex justify-start flex-col items-start">
-                  <p className="cursor-pointer text-xs text-grey-400">
+                  <p className={`text-xs text-grey-400 ${interBold.className}`}>
                     Klaipėda, Klaipėdos m. sav., Lietuva
                   </p>
-                  <p className="text-xs  text-blue-400">
-                    Pagal jūsų vietas (namai) • Atnaujinti vietovę
+                  <p
+                    className={`text-xs  text-blue-400 ${interBold.className}`}
+                  >
+                    Pagal jūsų vietas (namai) •
+                    <a href="" className="cursor-pointer">
+                      Atnaujinti vietovę
+                    </a>
                   </p>
                 </div>
               </div>

@@ -40,8 +40,8 @@ export default function Home() {
         {/* <div className="w-full bg-blue-600 text-center text-white p-2">
             <p className="text-xs">„Bard“ ką tik atnaujintas. Žr. naujinį</p>
           </div> */}
-        <div className="flex-1 sm:py-2 lg:px-3  justify-between  flex h-screen bg-gray-100">
-          <div className={`lg:flex w-full `}>
+        <div className="flex-1 sm:py-2 lg:px-3  justify-between  flex h-screen bg-gray-100 ">
+          <div className={`lg:flex w-full pt-[60px]`}>
             <SidePanel
               isDesktopMenu={isDesktopMenu}
               isMobileMenu={isMobileMenu}

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 type ToogleDesktopType = {
   setDesktopMenu: any;
+  setIsMobileMenu: any;
 };
 const Header: React.FC<ToogleDesktopType> = ({
   setDesktopMenu,
@@ -9,7 +10,7 @@ const Header: React.FC<ToogleDesktopType> = ({
 }) => {
   return (
     <div>
-      <div className="flex justify-between pt-2 bg-gray-100 ">
+      <div className="flex justify-between pb-2 lg:pb-0 pt-5  bg-gray-100 fixed top-0 w-full h-[50px]">
         <div className="flex items-center">
           <div className="pl-2">
             <div className="hidden xl:block">

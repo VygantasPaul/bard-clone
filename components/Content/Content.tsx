@@ -1,7 +1,16 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect, SetStateAction, Dispatch } from "react";
+import React, {
+  useState,
+  useEffect,
+  SetStateAction,
+  Dispatch,
+  useRef,
+} from "react";
 import styles from "./Content.module.css";
+import Message from "./Message/Message";
 import axios from "axios";
+import Input from "./Input/Input";
 interface MessageType {
   id: string;
   createdAt: string;
@@ -19,6 +28,12 @@ const Content: React.FC<MessagesType> = ({
   setMessages,
   isDesktopMenu,
 }) => {
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const [inputText, setInputText] = useState("");
   const addPost = async () => {
     try {
@@ -46,6 +61,7 @@ const Content: React.FC<MessagesType> = ({
             ...(prevState || []),
             response.data,
           ]);
+          scrollToBottom();
           setInputText("");
           console.log(response);
         } else {
@@ -56,7 +72,11 @@ const Content: React.FC<MessagesType> = ({
       console.error("Error while adding post:", error);
     }
   };
-
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      scrollToBottom();
+    }
+  }, [messages]);
   return (
     <>
       <div
@@ -65,34 +85,25 @@ const Content: React.FC<MessagesType> = ({
         <div className="bg-white h-full  max-h-full flex flex-col rounded-customMg h-full ">
           <div
             id="messages"
-            className="lg:flex w-full  flex-col space-y-4 px-6 py-3 justify-between   overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 "
+            className="lg:flex w-full  flex-col space-y-4 px-2 md:px-4 lg:px-6 py-3 justify-between   overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 "
           >
             <div>
-              <div className={`w-4/5  z-0 ${styles.margin_auto}`}>
+              <div className={`w-[90%] md:w-4/5  z-0 ${styles.margin_auto}`}>
                 {messages &&
+                  // eslint-disable-next-line react/jsx-key
                   messages.map((message) => (
-                    <div className="chat-message" key={message.id}>
-                      <div className="flex justify-center items-center text-gray-600">
-                        <div className="lg:flex flex-col space-y-2 w-full order-2 ">
-                          <span className="px-4 py-5 rounded-lg inline-block  w-full text-gray-600">
-                            {message.message}
-                          </span>
-                        </div>
-                        <img
-                          src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                          alt="My profile"
-                          className="w-10 h-10 rounded-full order-1"
-                        ></img>
-                        <div className="order-2 ">
-                          <i className="fa-solid fa-pencil"></i>
-                        </div>
-                      </div>
-                    </div>
+                    <Message
+                      message={message}
+                      key={message.id}
+                      messagesEndRef={messagesEndRef}
+                    />
                   ))}
               </div>
             </div>
           </div>
-          <div className={`sm:mb-0 w-4/5 pt-3 border-t ${styles.margin_auto}`}>
+          <div
+            className={`sm:mb-0 w-[90%] lg:w-4/5 pt-3 border-t ${styles.margin_auto}`}
+          >
             <div className="relative flex justify-center items-center mx-5">
               <button
                 type="button"
@@ -113,15 +124,11 @@ const Content: React.FC<MessagesType> = ({
               </button>
 
               <div className="relative w-full lg:w-4/2 m-auto">
-                <input
-                  type="text"
+                <Input
                   value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
-                  id="hs-trailing-icon"
-                  name="hs-trailing-icon"
-                  className="p-5 pe-11 block w-full border-gray-400 border border-gray-400 border-1 rounded-custom text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                  placeholder="Iveskite užklausa čia"
-                ></input>
+                  setInputValue={setInputText}
+                  placeholder={`Iveskite užklausa čia`}
+                />
                 <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -137,6 +144,7 @@ const Content: React.FC<MessagesType> = ({
                   </svg>
                 </div>
               </div>
+
               <button
                 type="button"
                 onClick={() => addPost()}
