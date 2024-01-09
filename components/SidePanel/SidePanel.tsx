@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SidePanel.module.css";
 import { Inter } from "next/font/google";
-import Router from "next/router";
-const interBold = Inter({ subsets: ["latin"], weight: "600" });
+const interBold = Inter({ subsets: ["latin"], weight: "500" });
 type ToogleDesktopType = {
   isDesktopMenu: any;
   isMobileMenu: any;
   setDesktopMenu: any;
+  setMobileMenu: any;
 };
 
 const SidePanel: React.FC<ToogleDesktopType> = ({
@@ -21,15 +21,11 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
   useEffect(() => {
     const handleResize = () => {
       const newIsMobileMenu = window.innerWidth <= 768;
-
-      // Check if the state needs to be updated
       if (newIsMobileMenu !== isMobileMenu) {
         setDesktopMenu(newIsMobileMenu);
       }
 
       const newIsDesktopMenu = window.innerWidth > 768;
-
-      // Check if the state needs to be updated
       if (newIsDesktopMenu !== isDesktopMenu) {
         setMobileMenu(!newIsDesktopMenu);
         setDesktopMenu(false);
@@ -51,7 +47,6 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
           isDesktopMenu ? "hidden" : ""
         }`}
       >
-        {/* Your sidebar content */}
         <div className="flex flex-col justify-between h-full pb-20 lg:pb-0">
           <div>
             <div className="pb-1">
@@ -109,16 +104,20 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
             </div>
           </div>
           <div>
-            <div className=" px-3">
-              <p className={`text-xs text-grey-400 ${interBold.className}`}>
-                Klaipėda, Klaipėdos m. sav., Lietuva
-              </p>
-              <p className={`text-xs text-blue-400 ${interBold.className}`}>
-                Pagal jūsų vietas (namai) •
-                <a href="" className="cursor-pointer">
-                  Atnaujinti vietovę
-                </a>
-              </p>
+            <div className="pl-7">
+              <ul>
+                <li className="list-disc">
+                  <p className={`text-xs text-grey-400 ${interBold.className}`}>
+                    Klaipėda, Klaipėdos m. sav., Lietuva
+                  </p>
+                  <p className={`text-xs text-blue-400 ${interBold.className}`}>
+                    Pagal jūsų vietas (namai) •
+                    <a href="" className="cursor-pointer">
+                      Atnaujinti vietovę
+                    </a>
+                  </p>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

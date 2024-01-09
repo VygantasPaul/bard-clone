@@ -18,8 +18,14 @@
   z-index: 9;
   padding: 1rem;
   background-color: white;
-
-  @media (min-width: 992px) {
+}
+@media (min-width: 768px) {
+  .desktopSidebar {
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .desktopSidebar {
     position: relative;
     width: 25%;
     background-color: transparent;
