@@ -35,6 +35,7 @@ const Content: React.FC<MessagesType> = ({
     }
   };
   const [inputText, setInputText] = useState("");
+  const [postCount, setPostCount] = useState(0);
   const addPost = async () => {
     try {
       const checkValidation = () => {
@@ -61,9 +62,8 @@ const Content: React.FC<MessagesType> = ({
             ...(prevState || []),
             response.data,
           ]);
-          scrollToBottom();
+          setPostCount((count) => count + 1);
           setInputText("");
-          console.log(response);
         } else {
           console.error("Unexpected response status:", response.status);
         }
@@ -76,7 +76,7 @@ const Content: React.FC<MessagesType> = ({
     if (messagesEndRef.current) {
       scrollToBottom();
     }
-  }, [messages]);
+  }, [postCount]);
   return (
     <>
       <div
@@ -88,7 +88,7 @@ const Content: React.FC<MessagesType> = ({
             className="lg:flex w-full  flex-col space-y-4 px-2 md:px-4 lg:px-6 py-3 justify-between   overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 "
           >
             <div>
-              <div className={`w-[90%] md:w-4/5  z-0 ${styles.margin_auto}`}>
+              <div className={`w-[80%] lg:w-[70%] ${styles.margin_auto}`}>
                 {messages &&
                   // eslint-disable-next-line react/jsx-key
                   messages.map((message) => (
@@ -102,7 +102,7 @@ const Content: React.FC<MessagesType> = ({
             </div>
           </div>
           <div
-            className={`sm:mb-0 w-[90%] lg:w-4/5 pt-3 border-t ${styles.margin_auto}`}
+            className={`w-full lg:w-[70%] pt-3 border-t ${styles.margin_auto}`}
           >
             <div className="relative flex justify-center items-center mx-5">
               <button

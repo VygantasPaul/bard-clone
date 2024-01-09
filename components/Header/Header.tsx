@@ -12,8 +12,8 @@ const Header: React.FC<ToogleDesktopType> = ({
     <div>
       <div className="flex justify-between pb-2 lg:pb-0 pt-5  bg-gray-100 fixed top-0 w-full h-[50px]">
         <div className="flex items-center">
-          <div className="pl-2">
-            <div className="hidden xl:block">
+          <div className="pl-4">
+            <div className="">
               <button
                 className="rounded-custom  hover:bg-gray-200 p-2"
                 onClick={() => setDesktopMenu((prevState: any) => !prevState)}
@@ -34,7 +34,7 @@ const Header: React.FC<ToogleDesktopType> = ({
                 </svg>
               </button>
             </div>
-            <div className="xl:hidden">
+            {/* <div className="xl:hidden">
               <button
                 className="rounded-custom  hover:bg-gray-200 p-2"
                 onClick={() => setIsMobileMenu((prevState: any) => !prevState)}
@@ -54,10 +54,10 @@ const Header: React.FC<ToogleDesktopType> = ({
                   <line x1="3" y1="18" x2="21" y2="18" />
                 </svg>
               </button>
-            </div>
+            </div> */}
           </div>
           <div>
-            <h1 className="text-xl text-gray-600 pl-4">Bard</h1>
+            <h1 className="text-xl text-gray-600 pl-2">Bard</h1>
           </div>
         </div>
         <div className="flex items-center">

@@ -10,9 +10,9 @@ import Header from "../../components/Header/Header";
 export default function Home() {
   const [messages, setMessages] = useState<Array<any> | null>(null);
   const [isDesktopMenu, setDesktopMenu] = useState(false);
-  const [isMobileMenu, setIsMobileMenu] = useState(false);
+  const [isMobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => {
-    setIsMobileMenu(!isMobileMenu);
+    setMobileMenu(!isMobileMenu);
   };
   const toggleDesktopMenu = () => {
     setDesktopMenu(!isDesktopMenu);
@@ -35,16 +35,18 @@ export default function Home() {
       >
         <Header
           setDesktopMenu={setDesktopMenu}
-          setIsMobileMenu={setIsMobileMenu}
+          setIsMobileMenu={setMobileMenu}
         />
         {/* <div className="w-full bg-blue-600 text-center text-white p-2">
             <p className="text-xs">„Bard“ ką tik atnaujintas. Žr. naujinį</p>
           </div> */}
         <div className="flex-1 sm:py-2 lg:px-3  justify-between  flex h-screen bg-gray-100 ">
-          <div className={`lg:flex w-full pt-[60px]`}>
+          <div className={`lg:flex w-full pt-[60px] md:pr-4 lg:pr-5`}>
             <SidePanel
               isDesktopMenu={isDesktopMenu}
               isMobileMenu={isMobileMenu}
+              setDesktopMenu={setDesktopMenu}
+              setMobileMenu={setMobileMenu}
               toggleDesktopMenu={toggleDesktopMenu}
               toggleMobileMenu={toggleMobileMenu}
             />
