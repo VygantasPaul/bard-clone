@@ -48,9 +48,9 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
     >
       <div className="flex flex-col justify-between h-full pb-20 lg:pb-0">
         <div>
-          <div className="pb-1">
+          <div className="pb-1 lg:-ml-2">
             <div className="inline-block items-center py-2 rounded-custom space-x-2 px-4 mb-4 bg-blue-200 hover:bg-gray-300">
-              <i className="fa-solid fa-plus"></i>
+              <i className={`fa-solid fa-plus`}></i>
               <button className="text-sm pl-2 font-medium text-black">
                 Naujas pokalbis
               </button>
@@ -63,7 +63,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
           </div>
           <div className="pb-1">
             <div className=" items-center text-left rounded-custom inline-block pr-4 hover:bg-gray-300 bg-sky-200 ">
-              <button className="flex justify-start text-left items-center space-x-3 text-gray-700 pl-2 py-2 w-full md:w-72 ">
+              <button className="flex justify-start text-left items-center space-x-4 text-gray-700 pl-2 py-1 w-full md:w-60">
                 <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
                 <p className={`text-sm  ${styles.whitespace}`}>
                   Incomplete conditional statement
@@ -73,7 +73,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
           </div>
           <div className="pb-1">
             <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600 hover:bg-gray-300 ">
-              <button className="flex justify-start text-left items-center space-x-3 text-gray-700 pl-2 py-2  w-full md:w-72">
+              <button className="flex justify-start text-left items-center space-x-4 text-gray-700 pl-2 py-1  w-full md:w-60">
                 <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
                 <p className={`text-sm  ${styles.whitespace}`}>
                   AI assistant doing well
@@ -83,7 +83,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
           </div>
           <div className="pb-1">
             <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600  hover:bg-gray-300">
-              <button className="flex justify-start text-left items-center space-x-3  text-gray-700 pl-2 py-2 w-full md:w-72">
+              <button className="flex justify-start text-left items-center space-x-4  text-gray-700 pl-2 py-1 w-full md:w-60">
                 <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
                 <p className={`text-sm  ${styles.whitespace}`}>
                   PHP Contact Form
@@ -93,7 +93,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
           </div>
           <div className="pb-1">
             <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600  hover:bg-gray-300">
-              <button className="flex justify-start text-left items-center space-x-3  text-gray-700 pl-2 py-2 w-full md:w-72">
+              <button className="flex justify-start text-left items-center space-x-4  text-gray-700 pl-2 py-1 w-full md:w-60">
                 <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
                 <p className={`text-sm  ${styles.whitespace}`}>
                   PHP Contact Form
@@ -103,16 +103,16 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
           </div>
         </div>
         <div>
-          <div className="pl-5 md:pl-6 lg:pl-7">
+          <div className="pl-2 md:pl-3 lg:pl-4">
             <ul>
               <li className="list-disc">
                 <p className={`text-xs text-grey-400 ${interBold.className}`}>
                   Klaipėda, Klaipėdos m. sav., Lietuva
                 </p>
                 <p className={`text-xs text-blue-400 ${interBold.className}`}>
-                  Pagal jūsų vietas (namai) •
+                  Pagal jūsų vietas (namai) {""}
                   <a href="" className="cursor-pointer">
-                    Atnaujinti vietovę
+                    • Atnaujinti vietovę
                   </a>
                 </p>
               </li>
