@@ -42,8 +42,8 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
 
   return (
     <div
-      className={`${sidebarClass} ${isMobileMenu ? "hidden" : ""} ${
-        isDesktopMenu ? "hidden" : ""
+      className={`${sidebarClass} ${isMobileMenu ? "hideSide" : ""} ${
+        isDesktopMenu ? "hideSide" : ""
       }`}
     >
       <div className="flex flex-col justify-between h-full pb-20 lg:pb-0">
