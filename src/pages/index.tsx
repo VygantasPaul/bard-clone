@@ -11,12 +11,7 @@ export default function Home() {
   const [messages, setMessages] = useState<Array<any> | null>(null);
   const [isDesktopMenu, setDesktopMenu] = useState(false);
   const [isMobileMenu, setMobileMenu] = useState(false);
-  const toggleMobileMenu = () => {
-    setMobileMenu(!isMobileMenu);
-  };
-  const toggleDesktopMenu = () => {
-    setDesktopMenu(!isDesktopMenu);
-  };
+
   const fetchMessages = async () => {
     const response = await axios.get(
       "https://656599ffeb8bb4b70ef1ebb4.mockapi.io/chat"
@@ -37,11 +32,11 @@ export default function Home() {
           setDesktopMenu={setDesktopMenu}
           setIsMobileMenu={setMobileMenu}
         />
-        {/* <div className="w-full bg-blue-600 text-center text-white p-2">
-            <p className="text-xs">„Bard“ ką tik atnaujintas. Žr. naujinį</p>
-          </div> */}
+        {/* <div className="w-full bg-blue-600 text-center text-white p-2 fixed top-[50px]">
+          <p className="text-xs">„Bard“ ką tik atnaujintas. Žr. naujinį</p>
+        </div> */}
         <div className="flex-1 sm:py-2 lg:px-3  justify-between  flex h-screen bg-gray-100 ">
-          <div className={`lg:flex w-full pt-[60px] md:pr-4 lg:pr-8`}>
+          <div className={`lg:flex w-full pt-[60px] lg:px-4 lg:pr-8`}>
             <SidePanel
               isDesktopMenu={isDesktopMenu}
               isMobileMenu={isMobileMenu}

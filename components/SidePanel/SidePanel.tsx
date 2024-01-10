@@ -41,88 +41,86 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
   }, [isMobileMenu, setDesktopMenu, setMobileMenu]);
 
   return (
-    <>
-      <div
-        className={`${sidebarClass} ${isMobileMenu ? "hidden" : ""} ${
-          isDesktopMenu ? "hidden" : ""
-        }`}
-      >
-        <div className="flex flex-col justify-between h-full pb-20 lg:pb-0">
-          <div>
-            <div className="pb-1">
-              <div className="bg-gray-100 inline-block items-center py-2 rounded-custom  px-5 mb-4 bg-blue-200 hover:bg-gray-300">
-                <i className="fa-solid fa-plus"></i>
-                <button className="text-sm pl-2 font-medium text-black">
-                  Naujas pokalbis
-                </button>
-              </div>
-            </div>
-            <div className="pb-1">
-              <div className="text-xs w-full pb-3 pl-2">
-                <p className="leading-4 font-semibold">Naujausi</p>
-              </div>
-            </div>
-            <div className="pb-1">
-              <div className=" items-center text-left rounded-custom inline-block pr-4 hover:bg-gray-300 bg-sky-200 ">
-                <button className="flex justify-start text-left items-center space-x-3 text-gray-700 pl-2 py-2 w-full md:w-72 ">
-                  <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
-                  <p className={`text-sm  ${styles.whitespace}`}>
-                    Incomplete conditional statement
-                  </p>
-                </button>
-              </div>
-            </div>
-            <div className="pb-1">
-              <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600 hover:bg-gray-300 ">
-                <button className="flex justify-start text-left items-center space-x-3 text-gray-700 pl-2 py-2  w-full md:w-72">
-                  <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
-                  <p className={`text-sm  ${styles.whitespace}`}>
-                    AI assistant doing well
-                  </p>
-                </button>
-              </div>
-            </div>
-            <div className="pb-1">
-              <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600  hover:bg-gray-300">
-                <button className="flex justify-start text-left items-center space-x-3  text-gray-700 pl-2 py-2 w-full md:w-72">
-                  <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
-                  <p className={`text-sm  ${styles.whitespace}`}>
-                    PHP Contact Form
-                  </p>
-                </button>
-              </div>
-            </div>
-            <div className="pb-1">
-              <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600  hover:bg-gray-300">
-                <button className="flex justify-start text-left items-center space-x-3  text-gray-700 pl-2 py-2 w-full md:w-72">
-                  <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
-                  <p className={`text-sm  ${styles.whitespace}`}>
-                    PHP Contact Form
-                  </p>
-                </button>
-              </div>
+    <div
+      className={`${sidebarClass} ${isMobileMenu ? "hidden" : ""} ${
+        isDesktopMenu ? "hidden" : ""
+      }`}
+    >
+      <div className="flex flex-col justify-between h-full pb-20 lg:pb-0">
+        <div>
+          <div className="pb-1">
+            <div className="inline-block items-center py-2 rounded-custom space-x-2 px-4 mb-4 bg-blue-200 hover:bg-gray-300">
+              <i className="fa-solid fa-plus"></i>
+              <button className="text-sm pl-2 font-medium text-black">
+                Naujas pokalbis
+              </button>
             </div>
           </div>
-          <div>
-            <div className="pl-7">
-              <ul>
-                <li className="list-disc">
-                  <p className={`text-xs text-grey-400 ${interBold.className}`}>
-                    Klaipėda, Klaipėdos m. sav., Lietuva
-                  </p>
-                  <p className={`text-xs text-blue-400 ${interBold.className}`}>
-                    Pagal jūsų vietas (namai) •
-                    <a href="" className="cursor-pointer">
-                      Atnaujinti vietovę
-                    </a>
-                  </p>
-                </li>
-              </ul>
+          <div className="pb-1">
+            <div className="text-xs w-full pb-3 pl-2">
+              <p className="leading-4 font-semibold">Naujausi</p>
+            </div>
+          </div>
+          <div className="pb-1">
+            <div className=" items-center text-left rounded-custom inline-block pr-4 hover:bg-gray-300 bg-sky-200 ">
+              <button className="flex justify-start text-left items-center space-x-3 text-gray-700 pl-2 py-2 w-full md:w-72 ">
+                <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
+                <p className={`text-sm  ${styles.whitespace}`}>
+                  Incomplete conditional statement
+                </p>
+              </button>
+            </div>
+          </div>
+          <div className="pb-1">
+            <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600 hover:bg-gray-300 ">
+              <button className="flex justify-start text-left items-center space-x-3 text-gray-700 pl-2 py-2  w-full md:w-72">
+                <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
+                <p className={`text-sm  ${styles.whitespace}`}>
+                  AI assistant doing well
+                </p>
+              </button>
+            </div>
+          </div>
+          <div className="pb-1">
+            <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600  hover:bg-gray-300">
+              <button className="flex justify-start text-left items-center space-x-3  text-gray-700 pl-2 py-2 w-full md:w-72">
+                <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
+                <p className={`text-sm  ${styles.whitespace}`}>
+                  PHP Contact Form
+                </p>
+              </button>
+            </div>
+          </div>
+          <div className="pb-1">
+            <div className="items-center text-left rounded-custom inline-block pr-4  border-gray-600  hover:bg-gray-300">
+              <button className="flex justify-start text-left items-center space-x-3  text-gray-700 pl-2 py-2 w-full md:w-72">
+                <i className="fa-regular fa-message bg-white p-1.5 rounded-custom"></i>
+                <p className={`text-sm  ${styles.whitespace}`}>
+                  PHP Contact Form
+                </p>
+              </button>
             </div>
           </div>
         </div>
+        <div>
+          <div className="pl-5 md:pl-6 lg:pl-7">
+            <ul>
+              <li className="list-disc">
+                <p className={`text-xs text-grey-400 ${interBold.className}`}>
+                  Klaipėda, Klaipėdos m. sav., Lietuva
+                </p>
+                <p className={`text-xs text-blue-400 ${interBold.className}`}>
+                  Pagal jūsų vietas (namai) •
+                  <a href="" className="cursor-pointer">
+                    Atnaujinti vietovę
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

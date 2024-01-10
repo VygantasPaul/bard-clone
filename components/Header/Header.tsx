@@ -4,10 +4,7 @@ type ToogleDesktopType = {
   setDesktopMenu: any;
   setIsMobileMenu: any;
 };
-const Header: React.FC<ToogleDesktopType> = ({
-  setDesktopMenu,
-  setIsMobileMenu,
-}) => {
+const Header: React.FC<ToogleDesktopType> = ({ setDesktopMenu }) => {
   return (
     <div>
       <div className="flex justify-between pb-2 lg:pb-0 pt-5  bg-gray-100 fixed top-0 w-full h-[50px]">

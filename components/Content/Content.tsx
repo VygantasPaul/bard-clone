@@ -82,7 +82,7 @@ const Content: React.FC<MessagesType> = ({
       <div
         className={`flex ${isDesktopMenu ? "lg:w-full" : "lg:w-5/6"} h-full`}
       >
-        <div className="bg-white h-full  max-h-full flex flex-col rounded-customMg h-full ">
+        <div className="bg-white h-full  max-h-full flex flex-col lg:rounded-customMg h-full ">
           <div
             id="messages"
             className="lg:flex w-full  flex-col space-y-4 px-2 md:px-4 lg:px-6 py-3 justify-between   overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 "

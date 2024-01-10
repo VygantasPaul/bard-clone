@@ -6,28 +6,28 @@
 }
 /* SidePanel.module.css */
 
-.mobileSidebar {
-  width: 100%;
-}
-
 .desktopSidebar {
   width: 100%;
   height: 100%;
   position: fixed;
   width: 70%;
   z-index: 9;
-  padding: 1rem;
+  padding: 0.7rem 1.5rem;
   background-color: white;
+  transition: transform 0.3s ease-in-out;
 }
+
 @media (min-width: 768px) {
   .desktopSidebar {
     width: 50%;
+    padding: 0.7rem 0.7rem;
   }
 }
 @media (min-width: 992px) {
   .desktopSidebar {
     position: relative;
-    width: 25%;
+    width: 22%;
     background-color: transparent;
+    padding: 0.7rem 0rem;
   }
 }
