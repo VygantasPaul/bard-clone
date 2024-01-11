@@ -108,9 +108,9 @@ const Content: React.FC<MessagesType> = ({
               <Button
                 iconStyle={`fa-solid fa-paperclip text-lg`}
                 text={null}
-                style={`h-10 w-12 rounded-custom transition duration-500 ease-in-out text-dark  hover:bg-gray-200 focus:outline-none`}
+                style={`h-10 w-10 rounded-custom transition duration-500 ease-in-out text-dark  hover:bg-gray-200 focus:outline-none`}
               />
-              <div className="relative w-full lg:w-4/2 m-auto">
+              <div className="relative w-full lg:w-4/2 m-auto flex items-center">
                 <Input
                   value={inputText}
                   setInputValue={setInputText}
@@ -120,12 +120,12 @@ const Content: React.FC<MessagesType> = ({
                 <Button
                   iconStyle={`fa-solid fa-microphone text-lg`}
                   text={null}
-                  style={`absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4 `}
+                  style={`rounded-custom h-10 w-10 hover:bg-gray-200 absolute  right-2 `}
                 />
               </div>
               <Button
                 onClick={() => addPost()}
-                style={`h-10 w-12 rounded-custom hover:bg-gray-200 transition duration-500 ease-in-out text-[#1a73e8] focus:outline-none ${
+                style={`h-10 w-10 rounded-custom hover:bg-gray-200 transition duration-500 ease-in-out text-[#1a73e8] focus:outline-none ${
                   inputText ? "" : "opacity-40 cursor-default"
                 }`}
                 iconStyle={`fa-brands fa-google-play text-lg`}
