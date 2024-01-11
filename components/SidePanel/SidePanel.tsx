@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SidePanel.module.css";
-import { Inter } from "next/font/google";
 import Button from "../Content/Button/Button";
 import Latest from "../Content/Latest/Latest";
 import Location from "../Content/Location/Location";
-const interBold = Inter({ subsets: ["latin"], weight: "500" });
+import SidePanelMessages from "./SidePanelMessages";
 type ToogleDesktopType = {
   isDesktopMenu: any;
   isMobileMenu: any;
@@ -17,6 +16,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
   isMobileMenu,
   setDesktopMenu,
   setMobileMenu,
+  messages,
 }) => {
   const sidebarClass = isMobileMenu
     ? `${styles.mobileSidebar}`
@@ -50,54 +50,24 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
       }`}
     >
       <div className="flex flex-col justify-between h-full pb-20 lg:pb-0">
-        <div>
-          <div className="pb-1 lg:-ml-2">
-            <Button
-              text={"Naujas pokalbis"}
-              style={
-                "flex items-center py-2 rounded-custom space-x-2 px-4 mb-4 bg-blue-200 hover:bg-blue-300"
-              }
-              iconStyle={`fa-regular fa-plus py-0.5 px-1`}
-            />
-          </div>
-          <div className="pb-1">
-            <Latest heading={"Naujausi"} />
-          </div>
-          <div className="pb-1">
-            <Button
-              text={"Incomplete conditional statement"}
-              style={
-                "flex items-center py-2 rounded-custom space-x-3 px-3 py-1.5  hover:bg-sky-300 bg-gray-200 md:w-60"
-              }
-              iconStyle={`fa-regular fa-message bg-white p-1.5 rounded-custom`}
-            />
-          </div>
-          <div className="pb-1">
-            <Button
-              text={"All i doing is working arround"}
-              style={
-                "flex items-center py-2 rounded-custom space-x-3 px-3 py-1.5  hover:bg-sky-300 bg-gray-200 md:w-60"
-              }
-              iconStyle={`fa-regular fa-message bg-white p-1.5 rounded-custom`}
-            />
-          </div>
-          <div className="pb-1">
-            <Button
-              text={"PHP basic, loop, arrays"}
-              style={
-                "flex items-center py-2 rounded-custom space-x-3 px-3 py-1.5  hover:bg-sky-300 bg-gray-200 md:w-60"
-              }
-              iconStyle={`fa-regular fa-message bg-white p-1.5 rounded-custom`}
-            />
-          </div>
-          <div className="pb-1">
-            <Button
-              text={"Keto mityba: mažiau angliavandenių, daugiau riebalų"}
-              style={
-                "flex items-center py-2 rounded-custom space-x-3 px-3 py-1.5  hover:bg-sky-300 bg-gray-200 md:w-60"
-              }
-              iconStyle={`fa-regular fa-message bg-white p-1.5 rounded-custom`}
-            />
+        <div className="pb-1 lg:-ml-2">
+          <Button
+            text={"Naujas pokalbis"}
+            style={
+              "flex items-center py-2 rounded-custom space-x-2 px-4 mb-4 bg-blue-200 hover:bg-blue-300"
+            }
+            iconStyle={`fa-regular fa-plus py-0.5 px-1`}
+          />
+
+          <div className=" overflow-y-auto scrollbar-thumb-blue  scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 pb-10">
+            <div className="pb-1">
+              <Latest heading={"Naujausi"} />
+            </div>
+            {messages &&
+              messages.map((message) => {
+                console.log(message);
+                return <SidePanelMessages message={message} key={message.id} />;
+              })}
           </div>
         </div>
         <div>

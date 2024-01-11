@@ -18,7 +18,6 @@ export default function Home() {
     );
 
     setMessages(response.data);
-    console.log(response.data);
   };
   useEffect(() => {
     fetchMessages();
@@ -42,6 +41,8 @@ export default function Home() {
               isMobileMenu={isMobileMenu}
               setDesktopMenu={setDesktopMenu}
               setMobileMenu={setMobileMenu}
+              messages={messages}
+              setMessages={setMessages}
             />
             <Content
               messages={messages}

@@ -51,7 +51,7 @@ const Content: React.FC<MessagesType> = ({
       const isValid = checkValidation();
       if (isValid) {
         const newPost = {
-          createdAt: format(new Date(), "yyyy-MM-dd'T'HH:mm:ssxxx"),
+          createdAt: format(new Date(), "yyyy-MM-dd"),
           message: inputText,
           image: "",
         };
