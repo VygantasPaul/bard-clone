@@ -9,6 +9,7 @@ type ToogleDesktopType = {
   isMobileMenu: any;
   setDesktopMenu: any;
   setMobileMenu: any;
+  messages: any;
 };
 
 const SidePanel: React.FC<ToogleDesktopType> = ({
@@ -64,7 +65,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
               <Latest heading={"Naujausi"} />
             </div>
             {messages &&
-              messages.map((message) => {
+              messages.map((message: any) => {
                 console.log(message);
                 return <SidePanelMessages message={message} key={message.id} />;
               })}
