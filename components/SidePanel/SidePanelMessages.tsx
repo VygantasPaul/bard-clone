@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../Content/Button/Button";
-const SidePanelMessages = ({ message }) => {
+type MessageType = {
+  message: any;
+};
+const SidePanelMessages: React.FC<MessageType> = ({ message }) => {
   return (
     <div className="pb-1">
       <Button
