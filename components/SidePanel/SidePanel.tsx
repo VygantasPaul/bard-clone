@@ -42,6 +42,7 @@ const SidePanel: React.FC<ToogleDesktopType> = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileMenu, setDesktopMenu, setMobileMenu]);
 
   return (
