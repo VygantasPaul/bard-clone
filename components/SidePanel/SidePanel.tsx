@@ -10,6 +10,7 @@ type ToogleDesktopType = {
   setDesktopMenu: any;
   setMobileMenu: any;
   messages: any;
+  setMessages: any;
 };
 
 const SidePanel: React.FC<ToogleDesktopType> = ({
